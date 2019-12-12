@@ -68,26 +68,28 @@ def send_anytext(message):
 	elif message.text == 'Продажа':
 		bot.send_message(chat_id, 'Вы выбрали раздел продаж', reply_markup = sell_keyboard())
 	
-	elif message.text == 'Покупка Рубль':
+	elif message.text == 'Покупка 🇷🇺':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(buy_ru_title,buy_rub,buy_ru_number,buy_ru_location))
-	elif message.text == 'Продажа Рубль':
+	elif message.text == 'Продажа 🇷🇺':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(sell_ru_title,sell_rub,sell_ru_number,sell_ru_location))
 	
-	elif message.text == 'Покупка Доллар':
+	elif message.text == 'Покупка 🇺🇸':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(buy_us_title,buy_usd,buy_us_number,buy_us_location))
-	elif message.text == 'Продажа Доллар':
+	elif message.text == 'Продажа 🇺🇸':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(sell_us_title,sell_usd,sell_us_number,sell_us_location))
 
-	elif message.text == 'Покупка Евро':
+	elif message.text == 'Покупка 🇪🇺':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(buy_eu_title,buy_euro,buy_eu_number,buy_eu_location))
-	elif message.text == 'Продажа Евро':
+	elif message.text == 'Продажа 🇪🇺':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(sell_eu_title,sell_euro,sell_eu_number,sell_eu_location))
 
-	elif message.text == 'Покупка Тенге':
+	elif message.text == 'Покупка 🇰🇿':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(buy_kz_title,buy_tenge,buy_kz_number,buy_kz_location))
-	elif message.text == 'Продажа Тенге':
+	elif message.text == 'Продажа 🇰🇿':
 		bot.send_message(chat_id, 'Названия банка/обменки: {}\nАктуальный курс: {}\nНомер телефона: {}\nАдрес: {}'.format(sell_kz_title,sell_tenge,sell_kz_number,sell_kz_location))
 	elif message.text == '/end':
+		bot.send_message(chat_id, 'Вы вышли в главное меню', reply_markup = start_keyboard())
+	elif message.text == '🔙':
 		bot.send_message(chat_id, 'Вы вышли в главное меню', reply_markup = start_keyboard())
 
 def start_keyboard():
@@ -96,19 +98,21 @@ def start_keyboard():
 	return markup  
 
 def buy_keyboard():
-	markup1 = types.ReplyKeyboardMarkup(one_time_keyboard=False, resize_keyboard=True)
-	markup1.row('Покупка Рубль',
-				'Покупка Доллар',
-				'Покупка Евро', 
-				'Покупка Тенге',)
+	markup1 = types.ReplyKeyboardMarkup(row_width = 2, one_time_keyboard=False, resize_keyboard=True)
+	markup1.add('Покупка 🇷🇺',
+				'Покупка 🇺🇸',
+				'Покупка 🇪🇺', 
+				'Покупка 🇰🇿',
+				'🔙')
 	return markup1  
 
 def sell_keyboard():
-	markup = types.ReplyKeyboardMarkup(one_time_keyboard=False, resize_keyboard=True)
-	markup.row('Продажа Рубль',
-				'Продажа Доллар',
-				'Продажа Евро',
-				'Продажа Тенге')
+	markup = types.ReplyKeyboardMarkup(row_width = 2, one_time_keyboard=False, resize_keyboard=True)
+	markup.add('Продажа 🇷🇺',
+				'Продажа 🇺🇸',
+				'Продажа 🇪🇺',
+				'Продажа 🇰🇿',
+				'🔙')
 	return markup  
 
 if __name__ == "__main__":
